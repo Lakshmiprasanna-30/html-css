@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        label{
+            font-weight: bold;
+        }
+        div{
+            /* margin-top: 30px; */
+            border: 1px solid black;
+            padding: 30px;
+            margin: auto;
+            width: 60%;
+        }
+        h1{
+            text-align: center;
+            text-decoration: underline;
+            color: coral;
+            /* margin-bottom: 20px; */
+        }
+        form{
+            margin-top: 50px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Registration Form</h1>
+    <form >
+        <label > User's Full Name</label>
+        <input type="text" placeholder="enter full name" >
+        <br><br>
+        <label >User's email address</label>
+        <input type="email" placeholder="enter email" required>
+        <br><br>
+        <label> user's password</label>
+        <input type="password" placeholder="enter password" required>
+        <br><br>
+        <label> Confirm password</label>
+        <input type="password" placeholder="re enter the password" required>
+        <br><br>
+        <label> date of birth</label>
+        <input type="date" >
+        <br><br>
+        <label> Select gender</label>
+        <select > 
+            <option value="">select the gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+        <br><br>
+        <label> Subscription option</label>
+        <input type="radio">Free
+        <input type="radio">Basic
+        <input type="radio">Premium
+        <br><br>
+        <label> Select hobbies</label>
+        <input type="checkbox">Reading
+        <input type="checkbox">Traveling
+        <input type="checkbox">Coding
+        <input type="checkbox">Swimming
+        <br><br>
+        <label>upload file here only .png or .jpg</label>
+        <input type="file" accept=".png/.jpg">
+    </form>
+    </div>
+</body>
+</html>
