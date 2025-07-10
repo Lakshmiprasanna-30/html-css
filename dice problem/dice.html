@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .dice{
+            /* border: 1px solid black; */
+            width: 40%;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: auto;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        body{
+           text-align: center;
+           margin-top: 10%;
+        }
+        .dice>div{
+            border: 1px solid black;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 30px;
+            /* background-color: rgb(165, 165, 165); */
+            border-radius: 5px;
+
+        }
+        #roll{
+            padding: 10px;
+            
+            border-radius: 5px;
+            font-weight: bold;
+
+        }
+        #roll:hover{
+            background-color: #e8bbbb;
+            cursor: pointer;
+        }
+        #winner{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .green {
+            background-color: green;
+            color: white;
+        }
+        .red {
+            background-color: red;
+            color: white;
+        }
+        .yellow {
+            background-color: yellow;
+            color: black;
+        }
+        .blue {
+            background-color: blue;
+            color: white;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="winner">Click "roll the dice" to play</div>
+    <div class="dice">
+        <div id="member-1">0</div>
+        <div id="member-2">0</div>
+        <div id="member-3">0</div>
+    </div>
+    <button id="roll">ROLL THE DICE</button>
+</body>
+</html>
+<script>
+    let btn=document.querySelector("#roll");
+    let diceId=[
+        document.getElementById("member-1"),
+        document.getElementById("member-2"),
+        document.getElementById("member-3")
+    ]
+    let winnerText = document.getElementById("winner");
+    btn.addEventListener("click", rollTheDice);
+    function rollTheDice(){
+        let score=diceId.map(()=>Math.floor(Math.random() * 6)+1);
+        diceId.forEach((d,i)=>{
+            d.innerText=score[i];
+            d.className="";
+
+        });
+        let maxNum= Math.max(...score);
+        let minNum= Math.min(...score);
+
+        
+        
+    //     let counts = {};
+    //   score.forEach(s => counts[s] = (counts[s] || 0) + 1);
+    //   let draw = Object.values(counts).some(c => c > 1 && c === score.length);
+
+    //   if (draw) {
+    //       winnerText.textContent = "It's a draw!";
+    //     diceId.forEach(d => d.classList.add("blue"));
+    //     return;
+    //   }
+      if (score[0] === score[1] && score[1] === score[2]) {
+        winnerText.textContent = "It's a draw!";
+        diceId.forEach(d => d.classList.add("blue"));
+        return;
+    }
+
+
+      // Assign colors
+      diceId.forEach((d, i) => {
+        if (score[i] === maxNum) {
+          d.classList.add("green");
+        } else if (score[i] === minNum) {
+          d.classList.add("red");
+        } else {
+          d.classList.add("yellow");
+        }
+      });
+
+      // Show winner
+      let winnerIndex = score.indexOf(maxNum);
+      winnerText.textContent = `Winner: Member ${winnerIndex + 1}`;
+    };    
+        
+
+    
+    
+    
+</script>
