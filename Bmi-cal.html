@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            border: 1px solid black;
+            width: 40%;
+            margin: auto;
+            margin-top: 10%;
+            padding: 20px;
+        }
+        label{
+            font-weight: bold;
+            font-size: 20px;
+        }
+        input[type="number"]{
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: 90%;
+            padding: 10px;
+            font-size: 15px;
+        }
+        button{
+            font-size: 20px;
+            padding: 10px;
+            background-color: rgb(205, 176, 106);
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Check your BMI</h1>
+        <h3>Enter your weight and height below to check your BMI results</h3>
+        <label for="">Put your weight in here(KG)</label><br>
+        <input type="number" placeholder="enter weight" id="weight"><br>
+        <label for="">And your height in here(CM)</label><br>
+        <input type="number" placeholder="enter height" id="height"><br>
+        <button onclick="calculateBmi()">Calculate BMI</button>
+        <h4></h4>
+    </div>
+</body>
+</html>
+<script>
+    function calculateBmi(){
+        let weight1=parseInt(document.querySelector("#weight").value);
+        let height1=parseInt(document.querySelector("#height").value);
+        let BMI=weight1/(height1*height1);
+        if(BMI<=18.4){
+           let h4= document.querySelector("h4");
+           h4.innerText="Your BMI is " + BMI + " " + "which means You are UnderWeight";
+
+        }
+        else if(BMI>=18.5 && BMI<=24.9){
+            let h4= document.querySelector("h4");
+           h4.innerText="Your BMI is " + BMI + " " + "which means You are Normal Weight";
+
+        }else if(BMI>=25 && BMI<=29.9){
+            let h4= document.querySelector("h4");
+           h4.innerText="Your BMI is " + BMI + " " + "which means You are Over Weight";
+
+        }else{
+            let h4= document.querySelector("h4");
+           h4.innerText="Your BMI is " + BMI + " " + "which means You are Obese";
+
+        }
+
+
+    }
+</script>
