@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            border: 1px solid black;
+            width: 30%;
+            padding: 20px;
+            margin: auto;
+            margin-top: 10%;
+        }
+        p{
+            border: 1px solid black;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        input[type="number"]{
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 13px;
+        }
+        button{
+            padding: 10px;
+            background-color: bisque;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body><div>
+    <p>Display here</p>
+    <input type="number" placeholder="enter 1st number" id="one">
+    <input type="number" placeholder="enter 2nd number" id="two">
+    <button onclick="exponent()">Click here to find the exponent!</button>
+    </div>
+</body>
+</html>
+<script>
+    function exponent(){
+        let num1=document.querySelector("#one").value;
+        let num2=document.querySelector("#two").value;
+        let result=num1**num2;
+        console.log(result);
+        document.querySelector("p").innerText=result;
+    }
+</script>
