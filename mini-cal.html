@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            border: 1px solid black;
+            padding: 10px;
+            width: 50%;
+            margin: auto;
+            margin-top: 100px;
+        }
+        input[type="number"]{
+            margin-bottom: 10px;
+            width: 40%;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 20px;
+        }
+        #options > button{
+            padding: 10px;
+            border-radius: 10px;
+            margin-right: 30px;
+           
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="inputs">
+            <input type="number" placeholder="enter 1st number" id="number1">
+            <input type="number" placeholder="enter 2nd number" id="number2">
+        </div>
+
+        <div id="options">
+            <button>Add</button>
+            <button>Subtract</button>
+            <button>Multiply</button>
+            <button>Divide</button>
+        </div>
+        
+
+    </div>
+</body>
+</html>
+<script>
+  let buttons = document.querySelectorAll("#options > button")
+  buttons.forEach(function(element){
+    element.addEventListener("click",myFunction);
+  })
+   function myFunction(){
+    let operation=event.target.innerText;
+    let num1=document.querySelector("#number1").value;
+    let num2=document.querySelector("#number2").value;
+    num1=parseInt(num1);
+    num2=parseInt(num2);
+
+    console.log(operation);
+    if(operation=="Add"){
+        alert(num1+num2);
+    }
+   else if(operation=="Subtract"){
+        alert(num1-num2);
+    }
+   else if(operation=="Multiply"){
+        alert(num1*num2);
+    }
+    else if(operation=="Divide"){
+        alert(num1/num2);
+    }
+   }
+</script>
