@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+           
+            
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+        }
+        .each-country{
+            /* border: 1px solid black; */
+            padding: 10px;
+            
+        }
+        img{
+            width: 200px;
+           
+        }
+        h3{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>fetching the data</h1>
+    <select name="sort by population" id="handlingPopulation">
+        <option value="">---</option>
+        <option value="ASC">ASC</option>
+        <option value="DSC">DSC</option>
+    </select>
+
+
+    <select name="sort by region" id="handlingRegion">
+        <option value="">---</option>
+        <option value="ASC">ASC</option>
+        <option value="DSC">DSC</option>
+    </select>
+
+    <div id="container"></div>
+</body>
+</html>
+<script>
+    async function fetching(){
+        let data=[];
+        try{
+            let result = await fetch("https://restcountries.com/v3.1/all?fields=name,flags,population,region,capital");
+         data = await result.json();
+        console.log(data);
+        countryDetails(data);
+        
+
+        }
+        catch(error){
+            console.log(error);
+
+        }
+        function countryDetails(data){
+            let container=document.querySelector("#container");
+            container.innerHTML="";
+            data.map(function(element){
+                let div=document.createElement("div");
+                div.className="each-country"
+                let images=document.createElement("img");
+                images.src=element.flags.png;
+                let countryName=document.createElement("h3");
+                countryName.innerText=element.name.common;
+                let populations=document.createElement("p");
+                populations.innerText="population:"+element.population;
+                let reg=document.createElement("p");
+                reg.innerText="region:"+element.region;
+                let capital=document.createElement("p");
+                capital.innerText="Capital:"+element.capital;
+
+                div.append(images,countryName,populations,reg,capital);
+                let container=document.getElementById("container");
+                container.append(div);
+
+            })
+
+        }
+        document.querySelector("#handlingPopulation").addEventListener("change", function () {
+            let selectedItem = document.querySelector("#handlingPopulation").value;
+            if (selectedItem === "ASC") {
+                data.sort((a, b) => a.population - b.population);
+                countryDetails(data);
+            }
+            if (selectedItem === "DSC") {
+                data.sort((a, b) => b.population - a.population);
+                countryDetails(data);
+            }
+        });
+
+        
+        document.querySelector("#handlingRegion").addEventListener("change", function () {
+            let selectedName = document.querySelector("#handlingRegion").value;
+
+            data.sort((a, b) => {
+                let regionA = (a.region || "").toUpperCase();
+                let regionB = (b.region || "").toUpperCase();
+
+                if (selectedName === "ASC") {
+                    return regionA.localeCompare(regionB);
+                }
+                if (selectedName === "DSC") {
+                    return regionB.localeCompare(regionA);
+                }
+                return 0;
+            });
+
+            countryDetails(data);
+        });
+    }
+
+        
+        
+        
+    
+    fetching();
+</script>
