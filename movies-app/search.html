@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./search.css">
+    <style>
+        #loader_div{
+            display:none;
+
+
+        }
+    </style>
+</head>
+<body>
+    <h1>Search Page</h1>
+    <a href="./search.html">search movies</a>
+
+
+
+    <div id="courosal"></div>
+
+
+    <div>
+        <input type="text" id="query">
+        <button onclick="searchMovie()">search</button>
+
+    </div>
+
+    
+
+    <div id="loader_div">
+        <iframe
+        src="https://giphy.com/embed/3o7bu3XilJ5BOiSGic"
+        width="480"
+        height="480"
+        frameborder="0"
+        class="giphy-embed"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <div id="movies-data">
+
+    </div>
+
+
+
+</body>
+</html>
+<script src="search.js"></script>

@@ -1,0 +1,16 @@
+#courosal img{
+    width:1200px;
+}
+#courosal{
+    margin-top:10px;
+    margin-button:20px;
+}
+/* .fetch_movies{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+} */
+ #loader_div{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+ }
