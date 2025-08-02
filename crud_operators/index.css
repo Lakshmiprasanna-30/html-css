@@ -1,0 +1,25 @@
+#navbar{
+    display:flex;
+    justify-content:space-between;
+}
+#instagramLogo img{
+    width:20%;
+}
+#option button{
+    margin-right:20px;
+    margin-top:20px;
+    
+
+}
+#post{
+    width:40%;
+    margin: auto;
+}
+#post img{
+    width:100%;
+}
+#post div{
+    border:1px solid black;
+    margin-bottom:20px;
+    padding:10px;
+}
